@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://burrell001-max.github.io/KeyGuard-Pro/sitemap.xml

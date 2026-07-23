@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ─── Custom range slider styling ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  background: #334155;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  border: 3px solid #065f46;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10b981;
+  cursor: pointer;
+  border: 3px solid #065f46;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ─── Smooth scrolling ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Font smooth rendering ─── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Password font for mono display ─── */
+.font-mono {
+  font-family: 'Courier New', 'Lucida Console', 'Monaco', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ─── AdSense slot containers ─── */
+.adsense-slot {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+/* ─── Focus outline for accessibility ─── */
+:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* ─── Strength bar transition ─── */
+.strength-bar-fill {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease;
+}
+
+/* ─── Selection color ─── */
+::selection {
+  background-color: rgba(16, 185, 129, 0.3);
+  color: #fff;
+}
+
+/* ─── Scrollbar styling ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ─── Checkbox accent ─── */
+input[type="checkbox"] {
+  accent-color: #10b981;
+}
+
+/* ─── Number input arrows hide on Chrome ─── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ─── Animation for content reveal ─── */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+/* ─── Navbar hover effects ─── */
+nav button {
+  transition: all 0.15s ease;
+}
+
+/* ─── Card hover lift ─── */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Emerald glow effect for generate button ─── */
+button:active {
+  transform: scale(0.97);
+}

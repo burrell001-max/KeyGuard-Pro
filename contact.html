@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | KeyGuard Pro</title>
+<meta name="description" content="Contact KeyGuard Pro with questions or feedback about our password generator and strength checker." />
+<meta name="robots" content="index, follow" />
+<style>
+  :root { --bg:#020618; --panel:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#10b981; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.65; }
+  header { border-bottom:1px solid var(--border); padding:20px 24px; }
+  .brand { display:flex; align-items:center; gap:12px; max-width:800px; margin:0 auto; }
+  .logo { width:36px; height:36px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px; flex-shrink:0; }
+  .brand-name { font-weight:600; font-size:20px; letter-spacing:-0.02em; }
+  .brand-tag { font-size:10px; color:var(--accent); letter-spacing:2px; margin-top:-2px; }
+  nav.crumb { max-width:800px; margin:16px auto 0; padding:0 24px; font-size:14px; }
+  nav.crumb a { color:var(--muted); text-decoration:none; }
+  nav.crumb a:hover { color:var(--accent); }
+  main { max-width:640px; margin:0 auto; padding:48px 24px 80px; }
+  .eyebrow { color:var(--accent); font-size:12px; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; text-align:center; }
+  h1 { font-size:2.5rem; letter-spacing:-0.03em; margin-bottom:12px; text-align:center; }
+  .lead { text-align:center; color:var(--muted); margin-bottom:36px; }
+  label { display:block; font-size:0.85rem; color:var(--muted); margin-bottom:6px; }
+  input, textarea {
+    width:100%; background:var(--panel); border:1px solid var(--border); color:var(--text);
+    border-radius:14px; padding:14px 16px; font-size:1rem; font-family:inherit; margin-bottom:18px;
+  }
+  textarea { min-height:130px; resize:vertical; }
+  input:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  button { width:100%; background:#fff; color:#000; border:none; border-radius:14px; padding:16px; font-size:1.05rem; font-weight:600; cursor:pointer; }
+  button:hover { background:#e2e8f0; }
+  .note { text-align:center; font-size:0.8rem; color:var(--muted); margin-top:14px; }
+  .direct { background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:20px 24px; margin-top:36px; text-align:center; }
+  .direct a { color:var(--accent); }
+  footer { border-top:1px solid var(--border); text-align:center; padding:24px; color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">KG</div>
+    <div>
+      <div class="brand-name">KeyGuard Pro</div>
+      <div class="brand-tag">SECURE · PRIVATE</div>
+    </div>
+  </div>
+</header>
+
+<nav class="crumb"><a href="/">← Back to KeyGuard Pro</a></nav>
+
+<main>
+  <div class="eyebrow">Support</div>
+  <h1>Contact Us</h1>
+  <p class="lead">Have a question, found a bug, or just want to say hi? We read every message.</p>
+
+  <!--
+    NOTE: This form currently has no backend wired up. Point the `action` at
+    your form handler (e.g. Formspree, a serverless function, or your own
+    endpoint) before going live, or replace with a mailto: link.
+  -->
+  <form action="#" method="POST">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+
+    <label for="message">How can we help you?</label>
+    <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="note">We reply within 1–2 business days. No data is stored after submission.</div>
+
+  <div class="direct">
+    Prefer email? Reach us directly at <a href="mailto:hello@keyguard-pro.xyz">hello@keyguard-pro.xyz</a>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> KeyGuard Pro. All rights reserved.</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

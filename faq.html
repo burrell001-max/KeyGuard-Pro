@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ | KeyGuard Pro</title>
+<meta name="description" content="Frequently asked questions about KeyGuard Pro's password generator and strength checker — privacy, security, and best practices." />
+<meta name="robots" content="index, follow" />
+<style>
+  :root { --bg:#020618; --panel:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#10b981; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.65; }
+  header { border-bottom:1px solid var(--border); padding:20px 24px; }
+  .brand { display:flex; align-items:center; gap:12px; max-width:800px; margin:0 auto; }
+  .logo { width:36px; height:36px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px; flex-shrink:0; }
+  .brand-name { font-weight:600; font-size:20px; letter-spacing:-0.02em; }
+  .brand-tag { font-size:10px; color:var(--accent); letter-spacing:2px; margin-top:-2px; }
+  nav.crumb { max-width:800px; margin:16px auto 0; padding:0 24px; font-size:14px; }
+  nav.crumb a { color:var(--muted); text-decoration:none; }
+  nav.crumb a:hover { color:var(--accent); }
+  main { max-width:800px; margin:0 auto; padding:48px 24px 80px; }
+  .eyebrow { color:var(--accent); font-size:12px; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; text-align:center; }
+  h1 { font-size:2.5rem; letter-spacing:-0.03em; margin-bottom:40px; text-align:center; }
+  details { background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:4px 24px; margin-bottom:12px; }
+  details[open] { padding-bottom:16px; }
+  summary { cursor:pointer; list-style:none; padding:18px 0; font-weight:500; font-size:1.05rem; display:flex; justify-content:space-between; align-items:center; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; color:var(--accent); font-size:1.6rem; font-weight:300; line-height:1; }
+  details[open] summary::after { content:"–"; }
+  details[open] summary { color:var(--accent); }
+  .answer { color:var(--text); padding-right:28px; font-size:0.98rem; }
+  footer { border-top:1px solid var(--border); text-align:center; padding:24px; color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">KG</div>
+    <div>
+      <div class="brand-name">KeyGuard Pro</div>
+      <div class="brand-tag">SECURE · PRIVATE</div>
+    </div>
+  </div>
+</header>
+
+<nav class="crumb"><a href="/">← Back to KeyGuard Pro</a></nav>
+
+<main>
+  <div class="eyebrow">Help Center</div>
+  <h1>Frequently Asked Questions</h1>
+
+  <details open>
+    <summary>How do I create a secure password?</summary>
+    <div class="answer">Use a minimum of 14 characters, combining uppercase and lowercase letters, numbers, and symbols. Avoid dictionary words, personal information, and repeated characters. The generator on our homepage does all of this automatically using your browser's secure random number generator.</div>
+  </details>
+
+  <details>
+    <summary>Is KeyGuard Pro really private?</summary>
+    <div class="answer">Yes. 100% of password generation and analysis happens locally in your browser using JavaScript. No passwords, settings, or analytics tied to your input are ever sent to a server. You can even use the generator completely offline once the page has loaded.</div>
+  </details>
+
+  <details>
+    <summary>Why should I use the password generator instead of making one up myself?</summary>
+    <div class="answer">Humans are surprisingly predictable when asked to "think random." Our generator uses the Web Crypto API's cryptographically secure random number generation to produce truly unpredictable passwords that resist both guessing and brute-force attacks.</div>
+  </details>
+
+  <details>
+    <summary>How accurate is the strength checker?</summary>
+    <div class="answer">It uses standard entropy calculations based on character set size and length, combined with checks for common patterns (repeated characters, sequences, dictionary words). While no estimator is perfect, it gives guidance that closely tracks how modern password-cracking tools actually behave.</div>
+  </details>
+
+  <details>
+    <summary>Can I use these generated passwords for everything?</summary>
+    <div class="answer">Yes — but we strongly recommend pairing them with a dedicated password manager (such as Bitwarden or 1Password) so you never have to memorize them. Always use a unique password for every account; reusing passwords is one of the most common causes of account compromise.</div>
+  </details>
+
+  <details>
+    <summary>Does KeyGuard Pro store or log any of my data?</summary>
+    <div class="answer">No. We have no servers that process your password input, no accounts, and no logs of what you generate or check. See our <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a> for full details.</div>
+  </details>
+
+  <details>
+    <summary>Is KeyGuard Pro free to use?</summary>
+    <div class="answer">Yes, completely free, with no usage limits or paywalls. The site is supported by non-intrusive advertising, which never has access to anything you type into the tools.</div>
+  </details>
+</main>
+
+<footer>© <span id="year"></span> KeyGuard Pro. All rights reserved.</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

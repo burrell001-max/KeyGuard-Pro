@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Breach Check | KeyGuard Pro</title>
+<meta name="description" content="Check whether a password has appeared in a known data breach without sending the password anywhere, using the k-anonymity Pwned Passwords method.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://keyguard-pro.xyz/breach-check.html">
+<meta name="theme-color" content="#0f172a">
+<style>body{margin:0;background:#0f172a;color:#e2e8f0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.75}
+main{max-width:720px;margin:0 auto;padding:24px 18px 60px}
+a{color:#7dd3fc}h1{font-size:1.9rem;color:#fff;line-height:1.25}h2{font-size:1.3rem;color:#fff;margin-top:32px}h3{font-size:1.05rem;color:#f1f5f9;margin-top:22px}
+.lede{font-size:1.08rem;color:#cbd5e1}.muted{color:#94a3b8;font-size:.9rem}nav a{margin-right:14px;font-size:.9rem}
+li{margin-bottom:6px}.card{display:block;background:#111c33;border:1px solid #1e293b;border-radius:12px;padding:14px 16px;margin:12px 0;text-decoration:none;color:#e2e8f0}.card span{display:block;color:#94a3b8;font-size:.9rem;margin-top:4px}.card strong{color:#fff}
+.cta{background:#111c33;border:1px solid #1e293b;border-radius:12px;padding:18px;margin:32px 0;text-align:center}
+footer{border-top:1px solid #1e293b;margin-top:36px;padding-top:16px;font-size:.88rem;color:#94a3b8}footer a{margin-right:12px}
+label{display:block;margin:14px 0 6px;color:#e2e8f0;font-size:.95rem}
+input[type=text],input[type=password],input[type=number],select{background:#111c33;color:#fff;border:1px solid #334155;border-radius:8px;padding:10px 12px;font-size:1rem;width:100%;box-sizing:border-box}
+.row{display:flex;gap:14px;flex-wrap:wrap}.row>div{flex:1;min-width:160px}
+button{background:#38bdf8;color:#0f172a;border:0;border-radius:8px;padding:11px 18px;font-size:1rem;font-weight:600;cursor:pointer;margin:14px 10px 0 0}
+button.secondary{background:#1e293b;color:#e2e8f0}
+.out{background:#111c33;border:1px solid #1e293b;border-radius:12px;padding:16px;margin-top:18px;font-size:1.25rem;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;color:#fff}
+.meter{margin-top:8px;font-size:.95rem;color:#cbd5e1}.result{margin-top:18px;padding:14px 16px;border-radius:12px;border:1px solid #334155;background:#111c33}
+.bad{border-color:#f87171}.good{border-color:#4ade80}
+.chk{display:flex;align-items:center;gap:8px;margin:10px 0}.chk input{width:auto}</style>
+</head>
+<body>
+<main>
+<nav><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+<h1>Password Breach Check</h1>
+<p class="lede">Find out whether a password has appeared in a known data breach. Your password is never sent anywhere: your browser sends only the first five characters of a one-way hash to the Have I Been Pwned "Pwned Passwords" service and does the final comparison itself.</p>
+<label for="pw">Password to check</label>
+<input type="password" id="pw" autocomplete="off" autocapitalize="off" spellcheck="false">
+<div class="chk"><input type="checkbox" id="show"><label for="show" style="margin:0">Show password</label></div>
+<button id="go">Check password</button>
+<div id="res" class="result" style="display:none" aria-live="polite"></div>
+<h2>How the check protects your privacy</h2>
+<ol>
+<li>Your browser turns the password into a SHA-1 hash, a fixed-length fingerprint that cannot be reversed.</li>
+<li>It sends only the first five characters of that hash to the Pwned Passwords service (run by Have I Been Pwned), together with a request that the reply be padded so its size does not hint at the result.</li>
+<li>The service returns the endings of every known breached hash that starts with those five characters, with a count for each.</li>
+<li>Your browser looks for the rest of your hash in that list. The match happens on your device.</li>
+</ol>
+<p>This design is called k-anonymity. Neither your password nor your full hash leaves your device, and KeyGuard Pro does not receive or store anything you type. The request goes directly from your browser to Have I Been Pwned, which has its own <a href="https://haveibeenpwned.com/Privacy">privacy policy</a>.</p>
+<h2>What the result means</h2>
+<ul>
+<li><strong>Found:</strong> the password has appeared in leaked data and attackers test such passwords first. Stop using it everywhere and replace it with a random one from our <a href="/">generator</a>.</li>
+<li><strong>Not found:</strong> it did not appear in the known data. That does not make it strong, because a weak password may simply not have leaked yet. Use a long random password and a <a href="/guides/password-managers-explained.html">password manager</a>.</li>
+</ul>
+<p>If a password you use turns up, read <a href="/guides/what-to-do-after-a-data-breach.html">what to do after a data breach</a>. As a precaution, avoid testing your most important passwords on any website; test an older or similar one, or change the important one anyway.</p>
+<footer><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div></footer>
+</main>
+<script>
+
+async function sha1Hex(s){
+  var buf=await crypto.subtle.digest("SHA-1",new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0");}).join("").toUpperCase();
+}
+async function pwnedCount(pw){
+  var h=await sha1Hex(pw),prefix=h.slice(0,5),suffix=h.slice(5);
+  var r=await fetch("https://api.pwnedpasswords.com/range/"+prefix,{headers:{"Add-Padding":"true"}});
+  if(!r.ok)throw new Error("Lookup failed ("+r.status+")");
+  var text=await r.text(),lines=text.split("\n");
+  for(var i=0;i<lines.length;i++){
+    var p=lines[i].trim().split(":");
+    if(p[0]===suffix){return parseInt(p[1],10)||0;}
+  }
+  return 0;
+}
+(function(){
+  var pw=document.getElementById("pw"),res=document.getElementById("res");
+  document.getElementById("show").addEventListener("change",function(){pw.type=this.checked?"text":"password";});
+  async function run(){
+    var v=pw.value;
+    if(!v){return;}
+    res.style.display="block";res.className="result";res.textContent="Checking\u2026";
+    try{
+      var c=await pwnedCount(v);
+      if(c>0){res.className="result bad";res.textContent="This password has appeared in known data breaches "+c.toLocaleString()+" times. Do not use it.";}
+      else{res.className="result good";res.textContent="This password was not found in the known breach data. That is good, but it does not prove the password is strong.";}
+    }catch(e){
+      res.className="result";res.textContent="The check could not be completed. Please check your connection and try again.";
+    }
+  }
+  document.getElementById("go").addEventListener("click",run);
+  pw.addEventListener("keydown",function(e){if(e.key==="Enter")run();});
+})();
+</script>
+</body>
+</html>

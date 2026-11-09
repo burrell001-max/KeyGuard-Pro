@@ -16,12 +16,14 @@ footer{border-top:1px solid #1e293b;margin-top:36px;padding-top:16px;font-size:.
 </head>
 <body>
 <main>
-<nav><a href="/">&larr; KeyGuard Pro</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+<nav><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
 <h1>Privacy Policy</h1>
 
 <p>This policy explains what happens to your data when you use keyguard-pro.xyz ("KeyGuard Pro", "we", "us").</p>
 <h2>Passwords you generate or type</h2>
 <p>Passwords are generated and analyzed by JavaScript running in your browser, using your browser's cryptographic random number generator. The passwords you generate, and the text you type into the strength checker, are not sent to our servers and are not stored by us. Because we do not keep them, we cannot recover a password for you. When you press a copy button, the password is placed on your device's clipboard, and you may want to clear it afterwards.</p>
+<h2>The Breach Check page</h2>
+<p>The optional Breach Check page is the one place where something derived from a password leaves your browser. When you use it, your browser computes a SHA-1 hash of the password on your device and sends only the first five characters of that hash to the Pwned Passwords service run by Have I Been Pwned (haveibeenpwned.com), which replies with a list of matching hash endings. Your browser compares the rest of the hash locally. Neither your password nor your full hash is sent, and we do not receive or store anything you enter. The request goes straight from your browser to Have I Been Pwned, which is subject to its own <a href="https://haveibeenpwned.com/Privacy">privacy policy</a>. The password and passphrase generators make no such request.</p>
 <h2>What we don't collect</h2>
 <p>There are no accounts and no sign-up. We do not ask for your name, email address or any other personal information to use the tool.</p>
 <h2>Analytics and advertising</h2>
@@ -40,7 +42,7 @@ footer{border-top:1px solid #1e293b;margin-top:36px;padding-top:16px;font-size:.
 <h2>Contact</h2>
 <p>Questions about this policy? Write to us through the <a href="/contact.html">Contact page</a>.</p>
 <p class="muted">Last updated: November 2026</p>
-<footer><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div></footer>
+<footer><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div></footer>
 </main>
 </body>
 </html>

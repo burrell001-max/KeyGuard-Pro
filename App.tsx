@@ -34,7 +34,6 @@ const KeyGuardPro: React.FC = () => {
   // Navigation state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('generator');
-  const [showContactSuccess, setShowContactSuccess] = useState(false);
 
   // Generator State
   const [password, setPassword] = useState('');
@@ -55,13 +54,6 @@ const KeyGuardPro: React.FC = () => {
   const [showCheckPassword, setShowCheckPassword] = useState(false);
   const [analysis, setAnalysis] = useState<StrengthResult | null>(null);
 
-  // Contact Form State
-  const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
   // Password Character Sets
   const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
@@ -72,7 +64,7 @@ const KeyGuardPro: React.FC = () => {
   // Generate secure password using Web Crypto API
   const generatePassword = useCallback((): string => {
     let charset = '';
-    
+
     if (options.uppercase) charset += UPPERCASE;
     if (options.lowercase) charset += LOWERCASE;
     if (options.numbers) charset += NUMBERS;
@@ -140,7 +132,7 @@ const KeyGuardPro: React.FC = () => {
     const entropy = len * Math.log2(Math.max(charsetSize, 1));
 
     // Base score from length and variety
-    let score = Math.min(100, Math.floor((entropy / 4.2)));
+    let score = Math.min(100, Math.floor(entropy / 4.2));
 
     // Penalties
     if (len < 8) score = Math.min(score, 20);
@@ -180,7 +172,7 @@ const KeyGuardPro: React.FC = () => {
     const guessesPerSecond = 1e10; // 10 billion guesses/sec (offline, GPU cluster)
     const combinations = Math.pow(2, entropy);
     const seconds = combinations / guessesPerSecond;
-    
+
     let crackTime = '';
     if (seconds < 1) crackTime = 'Instant';
     else if (seconds < 60) crackTime = '< 1 minute';
@@ -259,16 +251,16 @@ const KeyGuardPro: React.FC = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      
+
       // Add to history if it's a fresh generated password
       if (!fromHistory) {
         const newHistory: GeneratedHistory = {
           password: text,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };
-        setHistory(prev => [newHistory, ...prev.slice(0, 4)]);
+        setHistory((prev) => [newHistory, ...prev.slice(0, 4)]);
       }
-      
+
       setTimeout(() => setCopied(false), 1800);
     } catch (err) {
       // Fallback copy
@@ -285,13 +277,13 @@ const KeyGuardPro: React.FC = () => {
 
   // Update options
   const updateOption = (key: keyof PasswordOptions, value: boolean | number) => {
-    setOptions(prev => {
+    setOptions((prev) => {
       const newOptions = { ...prev, [key]: value };
-      
+
       // Ensure at least one character type is selected
       const types = ['uppercase', 'lowercase', 'numbers', 'symbols'];
-      const selected = types.filter(t => newOptions[t as keyof PasswordOptions] as boolean);
-      
+      const selected = types.filter((t) => newOptions[t as keyof PasswordOptions] as boolean);
+
       if (selected.length === 0) {
         // Force lowercase if none selected
         if (key !== 'lowercase') newOptions.lowercase = true;
@@ -309,26 +301,6 @@ const KeyGuardPro: React.FC = () => {
   // Strength indicator for generator (live)
   const generatorStrength = calculateStrength(password);
 
-  // Handle contact form
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!contactForm.name || !contactForm.email || !contactForm.message) {
-      alert('Please fill out all fields.');
-      return;
-    }
-
-    // Simulate submission (client-side only)
-    setTimeout(() => {
-      setShowContactSuccess(true);
-      setContactForm({ name: '', email: '', message: '' });
-      
-      setTimeout(() => {
-        setShowContactSuccess(false);
-      }, 3200);
-    }, 450);
-  };
-
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -345,17 +317,19 @@ const KeyGuardPro: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [updateGeneratedPassword]);
 
-  // Navigation items
+  // Navigation items (scroll to sections on this page)
   const navItems = [
     { label: 'Generator', id: 'generator' },
     { label: 'Strength Checker', id: 'checker' },
+    { label: 'FAQ', id: 'faq' },
   ];
 
+  // Real pages (each has its own URL)
   const pageLinks = [
+    { label: 'Guides', href: '/guides.html' },
     { label: 'About', href: '/about.html' },
-    { label: 'FAQ', href: '/faq.html' },
     { label: 'Contact', href: '/contact.html' },
-    { label: 'Privacy', href: '/privacy.html' },
+    { label: 'Privacy', href: '/privacy-policy.html' },
   ];
 
   return (
@@ -365,8 +339,8 @@ const KeyGuardPro: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            <div
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-3 cursor-pointer group"
             >
               <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
@@ -404,7 +378,7 @@ const KeyGuardPro: React.FC = () => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <button 
+              <button
                 onClick={() => scrollToSection('generator')}
                 className="px-5 py-2 text-sm rounded-full bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 transition font-medium text-white"
               >
@@ -413,8 +387,8 @@ const KeyGuardPro: React.FC = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2"
               aria-label="Toggle menu"
             >
@@ -450,8 +424,8 @@ const KeyGuardPro: React.FC = () => {
                     {link.label}
                   </a>
                 ))}
-                <button 
-                  onClick={() => scrollToSection('generator')} 
+                <button
+                  onClick={() => scrollToSection('generator')}
                   className="mt-3 mx-4 py-3 rounded-full bg-emerald-500 text-center text-sm font-medium"
                 >
                   Generate Secure Password
@@ -471,17 +445,17 @@ const KeyGuardPro: React.FC = () => {
           Generate passwords.<br />Stay protected.
         </h1>
         <p className="max-w-xl mx-auto text-xl text-slate-400 mb-9">
-          Professional-grade password generator and analyzer. Everything runs locally in your browser. 
+          Professional-grade password generator and analyzer. Everything runs locally in your browser.
           Your passwords never leave your device.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button 
+          <button
             onClick={() => scrollToSection('generator')}
             className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-semibold text-lg hover:bg-slate-100 active:scale-[0.985] transition flex items-center justify-center gap-3"
           >
             Start Generating <span className="text-xl">→</span>
           </button>
-          <button 
+          <button
             onClick={() => scrollToSection('checker')}
             className="px-8 py-4 border border-slate-700 hover:border-slate-500 rounded-2xl font-medium text-lg transition"
           >
@@ -494,7 +468,7 @@ const KeyGuardPro: React.FC = () => {
       {/* CORE TOOLS SECTION */}
       <div className="max-w-7xl mx-auto px-6 pb-20">
         <div className="grid lg:grid-cols-5 gap-6">
-          
+
           {/* PASSWORD GENERATOR — CORE TOOL 1 */}
           <div id="generator" className="lg:col-span-3 bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10">
             <div className="flex items-start justify-between mb-8">
@@ -516,12 +490,12 @@ const KeyGuardPro: React.FC = () => {
                   <span className="text-slate-600">••••••••••••••••••••••••••••••</span>
                 )}
               </div>
-              
+
               <div className="absolute top-4 right-4 flex items-center gap-1.5">
-                <button 
+                <button
                   onClick={() => setShowPassword(!showPassword)}
                   className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? (
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
@@ -529,8 +503,8 @@ const KeyGuardPro: React.FC = () => {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                   )}
                 </button>
-                
-                <button 
+
+                <button
                   onClick={() => copyToClipboard(password)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${copied ? 'bg-emerald-500 text-white' : 'bg-white text-slate-900 hover:bg-emerald-50'}`}
                 >
@@ -555,8 +529,8 @@ const KeyGuardPro: React.FC = () => {
                 </span>
               </div>
               <div className="h-2.5 bg-slate-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full rounded-full transition-all duration-300" 
+                <div
+                  className="h-full rounded-full transition-all duration-300"
                   style={{ width: `${generatorStrength.score}%`, backgroundColor: generatorStrength.color }}
                 />
               </div>
@@ -577,18 +551,19 @@ const KeyGuardPro: React.FC = () => {
                       value={options.length}
                       onChange={(e) => handleLengthChange(parseInt(e.target.value) || 8)}
                       className="w-16 bg-slate-950 text-center border border-slate-700 text-lg font-mono rounded-xl py-1 focus:outline-none focus:border-emerald-500"
-                      min="8" max="64"
+                      min="8"
+                      max="64"
                     />
                     <span className="font-mono text-xs text-slate-500">CHARS</span>
                   </div>
                 </div>
-                <input 
-                  type="range" 
-                  min="8" 
-                  max="64" 
-                  value={options.length} 
+                <input
+                  type="range"
+                  min="8"
+                  max="64"
+                  value={options.length}
                   onChange={(e) => handleLengthChange(parseInt(e.target.value))}
-                  className="w-full accent-emerald-500" 
+                  className="w-full accent-emerald-500"
                 />
                 <div className="flex justify-between text-xs text-slate-600 mt-1 px-0.5 font-mono">
                   <div>8</div><div>64</div>
@@ -639,7 +614,7 @@ const KeyGuardPro: React.FC = () => {
             </div>
 
             {/* Generate Button */}
-            <button 
+            <button
               onClick={updateGeneratedPassword}
               className="mt-8 w-full py-4 text-lg font-semibold bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 transition rounded-2xl text-white flex items-center justify-center gap-3"
             >
@@ -658,8 +633,8 @@ const KeyGuardPro: React.FC = () => {
                       <span className="truncate pr-4 text-emerald-400/90">{item.password}</span>
                       <div className="flex items-center gap-2 text-xs text-slate-500">
                         <span>{item.timestamp}</span>
-                        <button 
-                          onClick={() => copyToClipboard(item.password, true)} 
+                        <button
+                          onClick={() => copyToClipboard(item.password, true)}
                           className="opacity-60 hover:opacity-100 px-2 py-1 transition hover:text-emerald-400"
                         >
                           COPY
@@ -683,7 +658,7 @@ const KeyGuardPro: React.FC = () => {
             {/* Input Field */}
             <div className="relative mb-5">
               <input
-                type={showCheckPassword ? "text" : "password"}
+                type={showCheckPassword ? 'text' : 'password'}
                 value={checkPassword}
                 onChange={(e) => setCheckPassword(e.target.value)}
                 placeholder="Paste or type a password to analyze..."
@@ -782,15 +757,16 @@ const KeyGuardPro: React.FC = () => {
         </div>
         <div className="max-w-2xl mx-auto text-lg text-slate-300 space-y-6 leading-relaxed text-center">
           <p>
-            KeyGuard Pro was created to give everyone access to military-grade password security tools without 
-            compromising privacy. We believe strong digital security should be simple, free, and completely private.
+            KeyGuard Pro was created to give everyone access to strong password security tools
+            without compromising privacy. We believe good digital security should be simple, free, and private.
           </p>
           <p>
-            Every password you generate and every strength analysis happens entirely within your browser. 
-            We never see, store, or transmit your passwords — not even to our servers.
+            Every password you generate and every strength analysis happens entirely within your browser.
+            We never see, store, or transmit the passwords you generate or type into the checker.
           </p>
           <p className="text-sm text-slate-400 pt-1">
-            Built for everyday users, journalists, developers, and professionals who demand the highest standards of client-side security.
+            Built for everyday users, journalists, developers, and professionals who care about client-side security.
+            Read more on the <a href="/about.html" className="text-emerald-400 hover:underline">About page</a>.
           </p>
         </div>
       </div>
@@ -806,25 +782,25 @@ const KeyGuardPro: React.FC = () => {
           <div className="space-y-3 max-w-3xl mx-auto">
             {[
               {
-                q: "How do I create a secure password?",
-                a: "Use a minimum of 14 characters. Combine uppercase, lowercase, numbers, and symbols. Avoid dictionary words, personal info, or repeating characters. The generator on this page does all of this for you automatically."
+                q: 'How do I create a secure password?',
+                a: 'Use a minimum of 14 characters. Combine uppercase, lowercase, numbers, and symbols. Avoid dictionary words, personal info, or repeating characters. The generator on this page does all of this for you automatically.',
               },
               {
-                q: "Is KeyGuard Pro really private?",
-                a: "Yes. 100% of processing happens in your browser using JavaScript. Your passwords are never sent to any server. We use standard analytics, described in our Privacy Policy. You can even use it completely offline once loaded."
+                q: 'Is KeyGuard Pro really private?',
+                a: 'The passwords you generate or type are never sent to any server; all of that processing happens in your browser using JavaScript. The site does use Google Analytics and Google AdSense, which may set cookies, as described in our Privacy Policy.',
               },
               {
-                q: "Why should I use the password generator?",
-                a: "Humans are terrible at creating random passwords. Our tool uses cryptographically secure random number generation (window.crypto) to create truly unpredictable passwords that resist brute-force attacks."
+                q: 'Why should I use the password generator?',
+                a: 'Humans are terrible at creating random passwords. Our tool uses cryptographically secure random number generation (window.crypto) to create truly unpredictable passwords that resist brute-force attacks.',
               },
               {
-                q: "How accurate is the strength checker?",
-                a: "It uses industry-standard entropy calculations and detects common patterns. While no estimator is perfect, it gives reliable guidance that aligns closely with modern password cracking techniques."
+                q: 'How accurate is the strength checker?',
+                a: 'It estimates entropy from length and character variety and flags common patterns. No estimator is perfect, but it gives useful guidance. It cannot tell whether a password has appeared in a data breach.',
               },
               {
-                q: "Can I use these passwords for everything?",
-                a: "Yes — but we strongly recommend using a dedicated password manager (like Bitwarden, 1Password, etc.) so you never have to remember them. Use a unique password for every account."
-              }
+                q: 'Can I use these passwords for everything?',
+                a: 'Yes — but we strongly recommend using a dedicated password manager (like Bitwarden, 1Password, etc.) so you never have to remember them. Use a unique password for every account.',
+              },
             ].map((faq, index) => (
               <details key={index} className="group bg-slate-950 border border-slate-800 rounded-2xl px-6 py-1 open:py-4 transition">
                 <summary className="cursor-pointer list-none py-4 font-medium flex justify-between items-center text-lg">
@@ -839,60 +815,6 @@ const KeyGuardPro: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* PRIVACY POLICY MODAL */}
-      {/* CONTACT SECTION */}
-      <div id="contact" className="max-w-3xl mx-auto px-6 py-16">
-        <div className="text-center mb-9">
-          <div className="text-emerald-400 text-sm tracking-[2px] mb-1">SUPPORT</div>
-          <h3 className="font-semibold text-4xl tracking-tight">Contact Us</h3>
-          <p className="text-slate-400 mt-2">Have questions or feedback? We read every message.</p>
-        </div>
-
-        <form onSubmit={handleContactSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input 
-              type="text" 
-              placeholder="Your Name" 
-              value={contactForm.name}
-              onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-              className="bg-slate-900 border border-slate-700 rounded-2xl px-6 py-[17px] focus:border-emerald-500 outline-none placeholder:text-slate-500" 
-              required 
-            />
-            <input 
-              type="email" 
-              placeholder="Email Address" 
-              value={contactForm.email}
-              onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-              className="bg-slate-900 border border-slate-700 rounded-2xl px-6 py-[17px] focus:border-emerald-500 outline-none placeholder:text-slate-500" 
-              required 
-            />
-          </div>
-          <textarea 
-            placeholder="How can we help you?" 
-            rows={5}
-            value={contactForm.message}
-            onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-            className="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-5 focus:border-emerald-500 outline-none placeholder:text-slate-500 resize-y min-h-[130px]" 
-            required 
-          />
-          <button 
-            type="submit" 
-            className="w-full py-4 font-semibold text-lg bg-white text-black rounded-2xl active:bg-slate-200 hover:bg-slate-100 transition"
-          >
-            SEND MESSAGE
-          </button>
-        </form>
-
-        <div className="text-center mt-5 text-xs text-slate-500">We reply within 1–2 business days. No data is stored after submission.</div>
-      </div>
-
-      {/* SUCCESS NOTIFICATION */}
-      {showContactSuccess && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-8 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-sm font-medium z-[80]">
-          <span>✓</span> Thank you! Your message was received.
-        </div>
-      )}
 
       {/* FOOTER */}
       <footer className="border-t border-slate-800 bg-slate-950">
@@ -910,8 +832,11 @@ const KeyGuardPro: React.FC = () => {
 
             <div className="flex flex-col md:items-end text-sm">
               <div className="flex flex-wrap gap-x-5 gap-y-1 text-slate-400">
-                <a href="/privacy.html" className="hover:text-white">Privacy Policy</a>
-                <a href="/faq.html" className="hover:text-white">Help &amp; FAQ</a>
+                <a href="/privacy-policy.html" className="hover:text-white">Privacy Policy</a>
+                <a href="/terms.html" className="hover:text-white">Terms of Service</a>
+                <a href="/guides.html" className="hover:text-white">Guides</a>
+                <a href="/passphrase-generator.html" className="hover:text-white">Passphrase Generator</a>
+                <a href="/breach-check.html" className="hover:text-white">Breach Check</a>
                 <a href="/about.html" className="hover:text-white">About</a>
                 <a href="/contact.html" className="hover:text-white">Contact</a>
               </div>
@@ -919,7 +844,7 @@ const KeyGuardPro: React.FC = () => {
             </div>
           </div>
 
-          {/* Educational Footer Block — SEO + Value */}
+          {/* Educational Footer Block */}
           <div className="mt-12 pt-7 border-t border-slate-900 text-xs leading-relaxed text-slate-400 max-w-3xl">
             <strong className="text-slate-300">Cybersecurity best practice:</strong> Use a password manager. Never reuse passwords across sites. Enable two-factor authentication wherever possible. A strong, unique password is your first line of defense against account takeovers.
           </div>

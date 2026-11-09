@@ -73,6 +73,13 @@
     -->
     <div id="root">
       <main style="max-width:760px;margin:0 auto;padding:24px 16px;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;color:#0f172a;">
+        <nav aria-label="Main" style="display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;margin-bottom:16px;">
+          <a href="/">Generator</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms</a>
+        </nav>
         <header>
           <h1>KeyGuard Pro: Free Password Generator &amp; Strength Checker</h1>
           <p>
@@ -133,9 +140,85 @@
           </p>
         </section>
 
+        <section>
+          <h2>How password strength is measured</h2>
+          <p>
+            KeyGuard Pro estimates strength as entropy, in bits. For a password made
+            of randomly chosen characters, entropy is the password length multiplied
+            by log<sub>2</sub> of the size of the character set. Every extra bit
+            doubles the number of guesses an attacker needs. The table below shows
+            how quickly length and variety add up.
+          </p>
+          <table style="border-collapse:collapse;width:100%;font-size:.95rem;">
+            <thead>
+              <tr><th align="left" style="border-bottom:1px solid #94a3b8;padding:6px;">Password</th><th align="left" style="border-bottom:1px solid #94a3b8;padding:6px;">Entropy</th><th align="left" style="border-bottom:1px solid #94a3b8;padding:6px;">Average time to guess</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:6px;">8-digit PIN</td><td style="padding:6px;">26.6 bits</td><td style="padding:6px;">Under a second</td></tr>
+              <tr><td style="padding:6px;">4 random dictionary words</td><td style="padding:6px;">51.7 bits</td><td style="padding:6px;">About 2 days</td></tr>
+              <tr><td style="padding:6px;">12 random lowercase letters</td><td style="padding:6px;">56.4 bits</td><td style="padding:6px;">About 55 days</td></tr>
+              <tr><td style="padding:6px;">12 random letters and digits</td><td style="padding:6px;">71.5 bits</td><td style="padding:6px;">About 5,000 years</td></tr>
+              <tr><td style="padding:6px;">6 random dictionary words</td><td style="padding:6px;">77.5 bits</td><td style="padding:6px;">About 350,000 years</td></tr>
+              <tr><td style="padding:6px;">16 random characters, all types</td><td style="padding:6px;">104.9 bits</td><td style="padding:6px;">Tens of trillions of years</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:.9rem;">
+            Times are an illustration, not a prediction. They assume an attacker who
+            has stolen a fast-hashed password database and can test 10 billion guesses
+            per second, and they use half the possible combinations as the average.
+            Well-designed sites use slow hashing, which makes real attacks far slower,
+            and passwords chosen by humans are much weaker than random ones of the
+            same length.
+          </p>
+        </section>
+
+        <section>
+          <h2>Random passwords vs passphrases</h2>
+          <p>
+            A random string such as <em>vK9#mQ2!xT7p</em> packs a lot of entropy into
+            few characters, but it is hard to type and remember. A passphrase made of
+            several randomly chosen words is longer but easier to remember. Six words
+            picked at random from a 7,776-word list reach about 77 bits, which is
+            comparable to a 12-character password of random letters and digits.
+          </p>
+          <p>
+            What matters is that the choice is random. A phrase you made up yourself,
+            a song lyric or a quote follows patterns that attackers test first, and
+            it is far weaker than its length suggests.
+          </p>
+        </section>
+
+        <section>
+          <h2>How attackers guess passwords</h2>
+          <ul>
+            <li><strong>Credential stuffing:</strong> trying a password leaked from one site on many others. This is why every account needs its own password.</li>
+            <li><strong>Dictionary and rule attacks:</strong> testing common words with predictable changes such as "P@ssw0rd" or a trailing "1!".</li>
+            <li><strong>Brute force:</strong> trying every combination. Only long, random passwords hold up against it.</li>
+            <li><strong>Phishing:</strong> tricking you into typing a password on a fake page. No password strength can stop this, but two-factor authentication and passkeys help.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What KeyGuard Pro does not do</h2>
+          <p>
+            KeyGuard Pro does not store, sync or remember your passwords, so you must
+            save each generated password yourself, ideally in a password manager.
+            The strength score is an estimate based on length and character variety;
+            it cannot know whether a password you chose has appeared in a data breach.
+            If a site supports passkeys, they are usually safer than any password.
+          </p>
+        </section>
+
         <noscript>
           <p><strong>KeyGuard Pro needs JavaScript</strong> to generate passwords and check their strength. Please enable JavaScript in your browser and reload the page.</p>
         </noscript>
+        <footer style="margin-top:32px;padding-top:16px;border-top:1px solid #cbd5e1;font-size:.9rem;">
+          <a href="/about.html">About</a> &middot;
+          <a href="/contact.html">Contact</a> &middot;
+          <a href="/privacy-policy.html">Privacy Policy</a> &middot;
+          <a href="/terms.html">Terms of Service</a>
+          <div style="margin-top:8px;">&copy; 2026 KeyGuard Pro</div>
+        </footer>
       </main>
     </div>
 

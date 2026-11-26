@@ -61,6 +61,10 @@ footer{border-top:1px solid #1e293b;margin-top:36px;padding-top:16px;font-size:.
 </ul>
 <p>These third-party cookies are controlled by Google, not by KeyGuard Pro. We do not combine them with anything you enter into the tools, because what you enter never leaves your browser.</p>
 
+<h2>The breach check and Have I Been Pwned</h2>
+<p>The optional <a href="/breach-check.html">breach check</a> is the only tool that contacts a third party. When you run a check, your browser computes a SHA-1 hash of the password on your device and sends only the first five characters of that hash to the Pwned Passwords service operated by Have I Been Pwned. The service returns the endings of every known breached hash that begins with those characters, and your browser finishes the comparison locally.</p>
+<p>Have I Been Pwned is an independent third party. It receives the five-character prefix and, like any web service, your IP address and standard request information such as your browser's user agent. It never receives your password or the full hash. The lookup needs no cookie from this site: it is a single request that your browser sends directly to Have I Been Pwned, and KeyGuard Pro does not receive or store what you type. Have I Been Pwned's <a href="https://haveibeenpwned.com/Privacy">privacy policy</a> explains how it handles requests.</p>
+
 <h2>Consent in the EEA, the UK and Switzerland</h2>
 <p>Google's consent message is shown to visitors in the European Economic Area, the United Kingdom and Switzerland, and asks whether advertising and analytics cookies may be used. Before a choice is made, the site signals a default of "denied" for advertising storage, ad user data, ad personalisation and analytics storage in those regions. Visitors elsewhere receive a default of "granted", which they can change at any time through the same Google controls.</p>
 

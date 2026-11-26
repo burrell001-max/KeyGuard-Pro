@@ -55,11 +55,12 @@ button.secondary{background:#1e293b;color:#e2e8f0}
 <main>
 <nav aria-label="Main"><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
 <h1>Password Breach Check</h1>
-<p class="lede">Find out whether a password has appeared in a known data breach. Your password is never sent anywhere: your browser sends only the first five characters of a one-way hash to the Have I Been Pwned "Pwned Passwords" service and does the final comparison itself.</p>
+<p class="lede">Find out whether a password has appeared in a known data breach. Your password is never sent anywhere: your browser sends only the first five characters of a one-way hash to the Have I Been Pwned "Pwned Passwords" service and does the final comparison itself. Have I Been Pwned sees your IP address, but never your password or the full hash.</p>
 <label for="pw">Password to check</label>
 <input type="password" id="pw" autocomplete="off" autocapitalize="off" spellcheck="false">
 <div class="chk"><input type="checkbox" id="show"><label for="show" style="margin:0">Show password</label></div>
 <button id="go">Check password</button>
+<p class="muted">Only a five-character SHA-1 prefix is sent to Have I Been Pwned, which sees your IP address. Your password and its full hash stay in this browser.</p>
 <div id="res" class="result" style="display:none" aria-live="polite"></div>
 
 <h2>How the check protects your privacy</h2>
@@ -69,7 +70,7 @@ button.secondary{background:#1e293b;color:#e2e8f0}
 <li>The service returns the endings of every known breached hash that starts with those five characters, with a count for each.</li>
 <li>Your browser looks for the rest of your hash in that list. The match happens on your device.</li>
 </ol>
-<p>This design is called k-anonymity. Neither your password nor your full hash leaves your device, and KeyGuard Pro does not receive or store anything you type. The request goes directly from your browser to Have I Been Pwned, which has its own <a href="https://haveibeenpwned.com/Privacy">privacy policy</a>.</p>
+<p>This design is called k-anonymity. Neither your password nor your full hash leaves your device, and KeyGuard Pro does not receive or store anything you type. The request goes directly from your browser to Have I Been Pwned, which has its own <a href="https://haveibeenpwned.com/Privacy">privacy policy</a> and, like any web service, can see your IP address.</p>
 
 <h2>What the result means</h2>
 <ul>

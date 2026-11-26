@@ -3,10 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2310b981'/><path d='M32 18a8 8 0 0 0-8 8v4h-1a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V33a3 3 0 0 0-3-3h-1v-4a8 8 0 0 0-8-8zm-4 12v-4a4 4 0 0 1 8 0v4h-8z' fill='white'/></svg>">
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+});
+gtag('consent', 'default', {
+  'ad_storage': 'granted',
+  'ad_user_data': 'granted',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'granted'
+});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
 <title>Password Breach Check | KeyGuard Pro</title>
 <meta name="description" content="Check whether a password has appeared in a known data breach without sending the password anywhere, using the k-anonymity Pwned Passwords method.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://keyguard-pro.xyz/breach-check.html">
+<meta property="og:site_name" content="KeyGuard Pro">
+<meta property="og:title" content="Password Breach Check | KeyGuard Pro">
+<meta property="og:description" content="Check whether a password has appeared in a known breach without sending it anywhere, using the k-anonymity Pwned Passwords method.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keyguard-pro.xyz/breach-check.html">
+<meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0f172a">
 <style>body{margin:0;background:#0f172a;color:#e2e8f0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.75}
 main{max-width:720px;margin:0 auto;padding:24px 18px 60px}
@@ -27,7 +53,7 @@ button.secondary{background:#1e293b;color:#e2e8f0}
 </head>
 <body>
 <main>
-<nav><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+<nav aria-label="Main"><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
 <h1>Password Breach Check</h1>
 <p class="lede">Find out whether a password has appeared in a known data breach. Your password is never sent anywhere: your browser sends only the first five characters of a one-way hash to the Have I Been Pwned "Pwned Passwords" service and does the final comparison itself.</p>
 <label for="pw">Password to check</label>
@@ -35,6 +61,7 @@ button.secondary{background:#1e293b;color:#e2e8f0}
 <div class="chk"><input type="checkbox" id="show"><label for="show" style="margin:0">Show password</label></div>
 <button id="go">Check password</button>
 <div id="res" class="result" style="display:none" aria-live="polite"></div>
+
 <h2>How the check protects your privacy</h2>
 <ol>
 <li>Your browser turns the password into a SHA-1 hash, a fixed-length fingerprint that cannot be reversed.</li>
@@ -43,13 +70,44 @@ button.secondary{background:#1e293b;color:#e2e8f0}
 <li>Your browser looks for the rest of your hash in that list. The match happens on your device.</li>
 </ol>
 <p>This design is called k-anonymity. Neither your password nor your full hash leaves your device, and KeyGuard Pro does not receive or store anything you type. The request goes directly from your browser to Have I Been Pwned, which has its own <a href="https://haveibeenpwned.com/Privacy">privacy policy</a>.</p>
+
 <h2>What the result means</h2>
 <ul>
 <li><strong>Found:</strong> the password has appeared in leaked data and attackers test such passwords first. Stop using it everywhere and replace it with a random one from our <a href="/">generator</a>.</li>
 <li><strong>Not found:</strong> it did not appear in the known data. That does not make it strong, because a weak password may simply not have leaked yet. Use a long random password and a <a href="/guides/password-managers-explained.html">password manager</a>.</li>
 </ul>
 <p>If a password you use turns up, read <a href="/guides/what-to-do-after-a-data-breach.html">what to do after a data breach</a>. As a precaution, avoid testing your most important passwords on any website; test an older or similar one, or change the important one anyway.</p>
-<footer><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div></footer>
+
+<h2>When a breach check is useful</h2>
+<p>The check is most useful for an old password you still use somewhere, or for one you suspect was exposed in a breach that was reported without saying exactly what was taken. It is also a quick way to settle an argument with yourself about a password you invented years ago and have been meaning to replace. Testing it costs one request and tells you something concrete rather than leaving you to guess.</p>
+<p>It is less useful as a check on a password you have just generated. A random password created by the generator cannot be in a leaked list, and the check will simply confirm that. Run it on the passwords you already have, then replace the ones that matter with generated ones.</p>
+
+<h2>What this page cannot tell you</h2>
+<p>A "not found" result is not a clean bill of health. The service only knows about breaches that have been collected and added to its data set. A password may have leaked in an incident that was never disclosed, or in one whose data never became public. It may also be weak in ways that have nothing to do with leaks, such as being short or based on a familiar word.</p>
+<p>The check also says nothing about the account tied to the password, the site that held it, or whether anyone has actually used it. For that, look at the breached service's own notice, check the account's recent activity and sign-in history, and follow the steps in the <a href="/guides/what-to-do-after-a-data-breach.html">breach guide</a>. If the account supports two-factor authentication, turn it on now rather than later.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Does this page send my password to KeyGuard Pro?</h3>
+<p>No. The page has no server component. The only network request is the one your browser makes directly to api.pwnedpasswords.com, and it contains five characters of a hash, not the password.</p>
+
+<h3>Why SHA-1 rather than a modern hash?</h3>
+<p>Because that is the format the Pwned Passwords data set uses, so both sides can compare the same value. SHA-1 is not used here to protect a stored secret; the hash is computed, used for one lookup and discarded, and the full hash never leaves the browser.</p>
+
+<h3>What does the number in the result mean?</h3>
+<p>It is the number of times that password appears in the data the service has collected, not the number of accounts it has broken into. A high count usually means the password is common or has been reused across many leaked sites, which makes it a bad choice wherever it is still in use.</p>
+
+<h3>Can I use this page offline?</h3>
+<p>No. The comparison needs the list from Have I Been Pwned, so it requires a network connection. The <a href="/">password generator</a> and <a href="/passphrase-generator.html">passphrase generator</a> do work offline once they have loaded.</p>
+
+<h2>More guides</h2>
+<a class="card" href="/guides/what-to-do-after-a-data-breach.html"><strong>What to Do After a Data Breach</strong><span>The order that matters when a password you use turns up in leaked data.</span></a>
+<a class="card" href="/guides/how-passwords-get-cracked.html"><strong>How Passwords Get Cracked</strong><span>Why leaked passwords are tested first, and the attacks that follow.</span></a>
+<a class="card" href="/guides/password-managers-explained.html"><strong>Password Managers Explained</strong><span>How to keep a unique password for every account without memorising them.</span></a>
+
+<footer>
+  <nav aria-label="Site"><a href="/">Generator</a><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/cookies.html">Cookie Policy</a><a href="/terms.html">Terms of Service</a></nav>
+  <div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div>
+</footer>
 </main>
 <script>
 

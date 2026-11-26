@@ -35,7 +35,6 @@ const KeyGuardPro: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('generator');
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showContactSuccess, setShowContactSuccess] = useState(false);
 
   // Generator State
   const [password, setPassword] = useState('');
@@ -55,13 +54,6 @@ const KeyGuardPro: React.FC = () => {
   const [checkPassword, setCheckPassword] = useState('');
   const [showCheckPassword, setShowCheckPassword] = useState(false);
   const [analysis, setAnalysis] = useState<StrengthResult | null>(null);
-
-  // Contact Form State
-  const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
 
   // Password Character Sets
   const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -141,7 +133,7 @@ const KeyGuardPro: React.FC = () => {
     const entropy = len * Math.log2(Math.max(charsetSize, 1));
 
     // Base score from length and variety
-    let score = Math.min(100, Math.floor((entropy / 4.2)));
+    let score = Math.min(100, Math.floor(entropy / 1.28));
 
     // Penalties
     if (len < 8) score = Math.min(score, 20);
@@ -310,26 +302,6 @@ const KeyGuardPro: React.FC = () => {
   // Strength indicator for generator (live)
   const generatorStrength = calculateStrength(password);
 
-  // Handle contact form
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!contactForm.name || !contactForm.email || !contactForm.message) {
-      alert('Please fill out all fields.');
-      return;
-    }
-
-    // Simulate submission (client-side only)
-    setTimeout(() => {
-      setShowContactSuccess(true);
-      setContactForm({ name: '', email: '', message: '' });
-      
-      setTimeout(() => {
-        setShowContactSuccess(false);
-      }, 3200);
-    }, 450);
-  };
-
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -454,7 +426,7 @@ const KeyGuardPro: React.FC = () => {
       {/* HERO */}
       <div className="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs tracking-widest text-emerald-400 mb-6">
-          100% CLIENT-SIDE • ZERO TRACKING
+          100% CLIENT-SIDE • NOTHING TYPED IS SENT
         </div>
         <h1 className="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
           Generate passwords.<br />Stay protected.
@@ -480,19 +452,6 @@ const KeyGuardPro: React.FC = () => {
         <div className="mt-6 text-xs text-slate-500">Uses secure <span className="font-mono">window.crypto.getRandomValues()</span></div>
       </div>
 
-      {/* ADSENSE SLOT — TOP */}
-      <div className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="adsense-slot mx-auto max-w-[728px]">
-          <ins 
-            className="adsbygoogle block" 
-            style={{ display: 'block', minHeight: '90px' }}
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" 
-            data-ad-slot="1234567890" 
-            data-ad-format="auto" 
-            data-full-width-responsive="true"
-          ></ins>
-        </div>
-      </div>
 
       {/* CORE TOOLS SECTION */}
       <div className="max-w-7xl mx-auto px-6 pb-20">
@@ -512,7 +471,7 @@ const KeyGuardPro: React.FC = () => {
 
             {/* Password Display */}
             <div className="relative mb-8">
-              <div className="bg-slate-950 border border-slate-700 rounded-2xl p-6 font-mono text-2xl md:text-3xl tracking-[3px] break-all min-h-[92px] flex items-center justify-between select-all">
+              <div className="bg-slate-950 border border-slate-700 rounded-2xl p-6 pr-6 md:pr-48 font-mono text-xl sm:text-2xl md:text-3xl tracking-[2px] md:tracking-[3px] break-all min-h-[92px] flex items-center justify-between select-all">
                 {showPassword ? (
                   password || '••••••••••••••••'
                 ) : (
@@ -520,7 +479,7 @@ const KeyGuardPro: React.FC = () => {
                 )}
               </div>
               
-              <div className="absolute top-4 right-4 flex items-center gap-1.5">
+              <div className="mt-3 flex items-center gap-1.5 md:mt-0 md:absolute md:top-4 md:right-4">
                 <button 
                   onClick={() => setShowPassword(!showPassword)}
                   className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition"
@@ -777,17 +736,19 @@ const KeyGuardPro: React.FC = () => {
         </div>
       </div>
 
-      {/* ADSENSE SLOT — BETWEEN TOOLS & CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 pb-10">
-        <div className="adsense-slot mx-auto max-w-[728px]">
-          <ins 
-            className="adsbygoogle block" 
-            style={{ display: 'block', minHeight: '100px' }}
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" 
-            data-ad-slot="9876543210" 
-            data-ad-format="auto" 
-            data-full-width-responsive="true"
-          ></ins>
+
+      {/* HOW TO USE / CONTENT */}
+      <div className="max-w-4xl mx-auto px-6 py-14 border-t border-slate-800">
+        <div className="text-center mb-8">
+          <div className="text-emerald-400 font-medium tracking-[3px] text-sm mb-3">GUIDE</div>
+          <h2 className="text-3xl tracking-tight font-semibold">How to get the most out of these tools</h2>
+        </div>
+        <div className="text-slate-300 space-y-4 leading-relaxed">
+          <p>Start with the generator above. A length of 16 characters with all four character types selected is a sensible default for most accounts, and 20 or more is worth the extra length for email, banking and anything that can reset your other accounts. If you have to type the password yourself rather than letting a password manager fill it in, use the <a href="/passphrase-generator.html" className="text-emerald-400 underline">passphrase generator</a> instead: six random words are easier to remember and about as strong as a twelve-character random string.</p>
+          <p>Copy the password straight into a password manager rather than a note, a document or a message to yourself. Because KeyGuard Pro does not store what it generates, the copy button is the only handover: once you close the tab, the password is gone unless you have saved it somewhere. Clear your clipboard afterwards if other people use the device.</p>
+          <p>The strength checker is for passwords you already have. It counts the character types present, estimates entropy from the length and the size of the character set, and then applies penalties for common words, repeated characters and sequences such as abc or 123. The crack time shown beside the score assumes a fast offline attack at ten billion guesses per second, so treat it as a rough guide rather than a promise. A long password built from predictable words can score higher than it deserves, which is why the site also offers the <a href="/breach-check.html" className="text-emerald-400 underline">breach check</a>: it tells you whether a password you already use has appeared in leaked data, while never sending the password itself anywhere.</p>
+          <p>If you want the reasoning behind any of this, the <a href="/guides.html" className="text-emerald-400 underline">password security guides</a> cover <a href="/guides/password-entropy-explained.html" className="text-emerald-400 underline">entropy</a>, <a href="/guides/passphrases-vs-random-passwords.html" className="text-emerald-400 underline">passphrases</a>, <a href="/guides/password-managers-explained.html" className="text-emerald-400 underline">password managers</a>, <a href="/guides/two-factor-authentication-setup.html" className="text-emerald-400 underline">two-factor authentication</a> and what to do <a href="/guides/what-to-do-after-a-data-breach.html" className="text-emerald-400 underline">after a data breach</a>. The <a href="/faq.html" className="text-emerald-400 underline">FAQ</a> answers the short questions, including whether the generator is really random and whether it is safe to type a password into the checker.</p>
+          <p>One limit worth stating plainly: no password strength score can tell you whether a particular account will be compromised. It cannot see the site's storage, your device or the people around you. What it can do is help you avoid the weaknesses that attackers try first, and pair a long unique password with a second factor wherever a service offers one.</p>
         </div>
       </div>
 
@@ -799,8 +760,8 @@ const KeyGuardPro: React.FC = () => {
         </div>
         <div className="max-w-2xl mx-auto text-lg text-slate-300 space-y-6 leading-relaxed text-center">
           <p>
-            KeyGuard Pro was created to give everyone access to military-grade password security tools without 
-            compromising privacy. We believe strong digital security should be simple, free, and completely private.
+            KeyGuard Pro exists to make strong passwords the easy choice. The tools are free, they run in your 
+            browser, and they do not require an account, which means there is no profile to build and nothing to sign up for.
           </p>
           <p>
             Every password you generate and every strength analysis happens entirely within your browser. 
@@ -828,7 +789,7 @@ const KeyGuardPro: React.FC = () => {
               },
               {
                 q: "Is KeyGuard Pro really private?",
-                a: "Yes. 100% of processing happens in your browser using JavaScript. No passwords, settings, or analytics are ever sent to any server. You can even use it completely offline once loaded."
+                a: "Yes. Password generation and analysis happen in your browser using JavaScript, and nothing you type into the tools is sent anywhere. The page loads privacy-friendly aggregate analytics, which cannot see what you enter. The tools also work offline once the page has loaded."
               },
               {
                 q: "Why should I use the password generator?",
@@ -867,32 +828,24 @@ const KeyGuardPro: React.FC = () => {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h3 className="text-3xl font-semibold tracking-tight">Privacy Policy</h3>
-                <p className="text-emerald-400 text-xs tracking-[2px] mt-1">LAST UPDATED • JANUARY 2026</p>
+                <p className="text-emerald-400 text-xs tracking-[2px] mt-1">LAST UPDATED • NOVEMBER 26, 2026</p>
               </div>
               <button onClick={() => setShowPrivacy(false)} className="text-4xl text-slate-500 hover:text-white leading-none">&times;</button>
             </div>
 
-            <div className="prose prose-invert text-sm leading-relaxed text-slate-300 space-y-5">
-              <p><strong>KeyGuard Pro does not collect, store, or transmit any personal data.</strong></p>
-              
-              <p>All password generation and strength analysis occurs entirely on your device using the browser's built-in Web Crypto API. We have no servers, no logs, and no user accounts.</p>
-              
-              <div>
-                <div className="font-semibold text-slate-200 mb-1">What we do NOT do:</div>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
-                  <li>Store passwords or form data</li>
-                  <li>Track users across sessions</li>
-                  <li>Send your data anywhere</li>
-                  <li>Require accounts or logins</li>
-                </ul>
-              </div>
+            <div className="text-sm leading-relaxed text-slate-300 space-y-5">
+              <p><strong>Passwords are generated and checked in your browser.</strong> They are not sent to KeyGuard Pro and are not stored by us. The short list of recent passwords lives only in the memory of this open tab and disappears when you reload.</p>
+
+              <p>The one exception on the site is the <a href="/breach-check.html" className="underline">breach check</a>, which sends the first five characters of a locally computed hash to Have I Been Pwned and compares the result on your device. That page explains the method in full.</p>
 
               <div>
-                <div className="font-semibold text-slate-200 mb-1">Google AdSense</div>
-                <p>This site uses Google AdSense to display ads. Google may use cookies to serve ads based on a user’s prior visits to this website or other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" className="underline">Google Ads Settings</a>.</p>
+                <div className="font-semibold text-slate-200 mb-1">Analytics and advertising</div>
+                <p>The site loads Google Analytics for aggregate page statistics and Google AdSense for advertising. Google and its partners may use cookies to serve ads based on your previous visits to this or other sites. These services do not receive what you type into the tools.</p>
               </div>
 
-              <p className="text-xs text-slate-400 pt-3">By using KeyGuard Pro you acknowledge that no data leaves your browser. This policy is effective immediately.</p>
+              <p>You can opt out of personalised advertising in <a href="https://adssettings.google.com" target="_blank" rel="noopener" className="underline">Google Ads Settings</a>. The full <a href="/privacy-policy.html" className="underline">Privacy Policy</a> and <a href="/cookies.html" className="underline">Cookie Policy</a> cover consent, cookies and deletion requests.</p>
+
+              <p className="text-xs text-slate-400 pt-3">Last updated: November 26, 2026.</p>
             </div>
 
             <button onClick={() => setShowPrivacy(false)} className="mt-8 w-full py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-sm font-medium">Close</button>
@@ -904,68 +857,19 @@ const KeyGuardPro: React.FC = () => {
       <div id="contact" className="max-w-3xl mx-auto px-6 py-16">
         <div className="text-center mb-9">
           <div className="text-emerald-400 text-sm tracking-[2px] mb-1">SUPPORT</div>
-          <h3 className="font-semibold text-4xl tracking-tight">Contact Us</h3>
-          <p className="text-slate-400 mt-2">Have questions or feedback? We read every message.</p>
+          <h3 className="font-semibold text-4xl tracking-tight">Contact</h3>
+          <p className="text-slate-400 mt-2">KeyGuard Pro is run by one person, so email is the fastest way to reach it.</p>
         </div>
 
-        <form onSubmit={handleContactSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input 
-              type="text" 
-              placeholder="Your Name" 
-              value={contactForm.name}
-              onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-              className="bg-slate-900 border border-slate-700 rounded-2xl px-6 py-[17px] focus:border-emerald-500 outline-none placeholder:text-slate-500" 
-              required 
-            />
-            <input 
-              type="email" 
-              placeholder="Email Address" 
-              value={contactForm.email}
-              onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-              className="bg-slate-900 border border-slate-700 rounded-2xl px-6 py-[17px] focus:border-emerald-500 outline-none placeholder:text-slate-500" 
-              required 
-            />
-          </div>
-          <textarea 
-            placeholder="How can we help you?" 
-            rows={5}
-            value={contactForm.message}
-            onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-            className="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-5 focus:border-emerald-500 outline-none placeholder:text-slate-500 resize-y min-h-[130px]" 
-            required 
-          />
-          <button 
-            type="submit" 
-            className="w-full py-4 font-semibold text-lg bg-white text-black rounded-2xl active:bg-slate-200 hover:bg-slate-100 transition"
-          >
-            SEND MESSAGE
-          </button>
-        </form>
-
-        <div className="text-center mt-5 text-xs text-slate-500">We reply within 1–2 business days. No data is stored after submission.</div>
-      </div>
-
-      {/* SUCCESS NOTIFICATION */}
-      {showContactSuccess && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-8 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-sm font-medium z-[80]">
-          <span>✓</span> Thank you! Your message was received.
-        </div>
-      )}
-
-      {/* ADSENSE SLOT — LOWER */}
-      <div className="max-w-7xl mx-auto px-6 pb-12">
-        <div className="adsense-slot mx-auto max-w-[728px]">
-          <ins 
-            className="adsbygoogle block" 
-            style={{ display: 'block', minHeight: '90px' }}
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" 
-            data-ad-slot="1122334455" 
-            data-ad-format="auto" 
-            data-full-width-responsive="true"
-          ></ins>
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 text-center">
+          <p className="text-slate-300 mb-3">Questions, bug reports, corrections, and privacy or advertising requests:</p>
+          <a href="mailto:keyguard-pro@outlook.com" className="text-emerald-400 text-lg font-medium underline break-all">keyguard-pro@outlook.com</a>
+          <p className="text-slate-400 text-sm mt-5 max-w-xl mx-auto">We aim to reply within two business days. Please never send a real password: we do not need one to help, and we cannot recover a password because the site does not store it.</p>
+          <p className="text-slate-500 text-xs mt-4 max-w-xl mx-auto">There is no contact form on this page, so nothing you write is collected here. The <a href="/privacy-policy.html" className="underline">Privacy Policy</a> explains how data is handled.</p>
         </div>
       </div>
+
+
 
       {/* FOOTER */}
       <footer className="border-t border-slate-800 bg-slate-950">
@@ -983,9 +887,13 @@ const KeyGuardPro: React.FC = () => {
 
             <div className="flex flex-col md:items-end text-sm">
               <div className="flex flex-wrap gap-x-5 gap-y-1 text-slate-400">
-                <button onClick={() => setShowPrivacy(true)} className="hover:text-white">Privacy Policy</button>
-                <button onClick={() => scrollToSection('faq')} className="hover:text-white">Help &amp; FAQ</button>
-                <button onClick={() => scrollToSection('contact')} className="hover:text-white">Contact</button>
+                <a href="/about.html" className="hover:text-white">About</a>
+                <a href="/faq.html" className="hover:text-white">FAQ</a>
+                <a href="/contact.html" className="hover:text-white">Contact</a>
+                <a href="/privacy-policy.html" className="hover:text-white">Privacy Policy</a>
+                <a href="/cookies.html" className="hover:text-white">Cookie Policy</a>
+                <a href="/terms.html" className="hover:text-white">Terms</a>
+                <button onClick={() => setShowPrivacy(true)} className="hover:text-white">Privacy summary</button>
               </div>
               <div className="mt-auto pt-6 md:pt-8 text-xs text-slate-600">© {new Date().getFullYear()} KeyGuard Pro. All rights reserved.</div>
             </div>

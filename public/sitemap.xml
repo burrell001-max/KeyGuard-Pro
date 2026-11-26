@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://keyguard-pro.xyz/</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/passphrase-generator.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/breach-check.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/faq.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/password-entropy-explained.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/how-passwords-get-cracked.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/passphrases-vs-random-passwords.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/password-managers-explained.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/two-factor-authentication-setup.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/guides/what-to-do-after-a-data-breach.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/about.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/contact.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/privacy-policy.html</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://keyguard-pro.xyz/terms.html</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://keyguard-pro.xyz/</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://keyguard-pro.xyz/passphrase-generator.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://keyguard-pro.xyz/breach-check.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides.html</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://keyguard-pro.xyz/faq.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/about.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://keyguard-pro.xyz/contact.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://keyguard-pro.xyz/privacy-policy.html</loc><lastmod>2026-11-26</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://keyguard-pro.xyz/cookies.html</loc><lastmod>2026-11-26</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://keyguard-pro.xyz/terms.html</loc><lastmod>2026-11-26</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/password-entropy-explained.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/passphrases-vs-random-passwords.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/how-passwords-get-cracked.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/two-factor-authentication-setup.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/password-managers-explained.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/what-to-do-after-a-data-breach.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/passkeys-vs-passwords.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://keyguard-pro.xyz/guides/master-password-guide.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

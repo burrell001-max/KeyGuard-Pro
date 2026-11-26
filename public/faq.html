@@ -1,11 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2310b981'/><path d='M32 18a8 8 0 0 0-8 8v4h-1a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V33a3 3 0 0 0-3-3h-1v-4a8 8 0 0 0-8-8zm-4 12v-4a4 4 0 0 1 8 0v4h-8z' fill='white'/></svg>">
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+});
+gtag('consent', 'default', {
+  'ad_storage': 'granted',
+  'ad_user_data': 'granted',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'granted'
+});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
 <title>FAQ | KeyGuard Pro</title>
-<meta name="description" content="Frequently asked questions about KeyGuard Pro's password generator and strength checker — privacy, security, and best practices." />
-<meta name="robots" content="index, follow" />
+<meta name="description" content="Frequently asked questions about KeyGuard Pro's password generator and strength checker: randomness, privacy, entropy, length and breach checks.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://keyguard-pro.xyz/faq.html">
+<meta property="og:site_name" content="KeyGuard Pro">
+<meta property="og:title" content="FAQ | KeyGuard Pro">
+<meta property="og:description" content="Answers about randomness, privacy, entropy, password length, passphrases and breach checks on KeyGuard Pro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keyguard-pro.xyz/faq.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0f172a">
 <style>
   :root { --bg:#020618; --panel:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#10b981; }
   * { box-sizing:border-box; }
@@ -20,17 +48,132 @@
   nav.crumb a:hover { color:var(--accent); }
   main { max-width:800px; margin:0 auto; padding:48px 24px 80px; }
   .eyebrow { color:var(--accent); font-size:12px; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; text-align:center; }
-  h1 { font-size:2.5rem; letter-spacing:-0.03em; margin-bottom:40px; text-align:center; }
+  h1 { font-size:2.5rem; letter-spacing:-0.03em; margin-bottom:16px; text-align:center; }
+  .lede { color:#cbd5e1; max-width:62ch; margin:0 auto 20px; text-align:center; }
+  h2 { font-size:1.35rem; margin-top:40px; }
   details { background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:4px 24px; margin-bottom:12px; }
   details[open] { padding-bottom:16px; }
-  summary { cursor:pointer; list-style:none; padding:18px 0; font-weight:500; font-size:1.05rem; display:flex; justify-content:space-between; align-items:center; }
+  summary { cursor:pointer; list-style:none; padding:18px 0; font-weight:500; font-size:1.05rem; display:flex; justify-content:space-between; gap:16px; align-items:center; }
   summary::-webkit-details-marker { display:none; }
-  summary::after { content:"+"; color:var(--accent); font-size:1.6rem; font-weight:300; line-height:1; }
+  summary::after { content:"+"; color:var(--accent); font-size:1.6rem; font-weight:300; line-height:1; flex-shrink:0; }
   details[open] summary::after { content:"–"; }
   details[open] summary { color:var(--accent); }
   .answer { color:var(--text); padding-right:28px; font-size:0.98rem; }
-  footer { border-top:1px solid var(--border); text-align:center; padding:24px; color:var(--muted); font-size:12px; }
+  footer { border-top:1px solid var(--border); margin-top:48px; padding-top:24px; color:var(--muted); font-size:13px; }
+  footer a { color:var(--muted); margin-right:13px; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are the passwords generated here truly random?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generator draws each character from your browser's cryptographic random number source, window.crypto.getRandomValues, rather than from Math.random. The cryptographic source is the one browsers use for security features, and its output is not predictable from earlier values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to type my password into the strength checker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The checker analyses the text in your browser and does not send it anywhere or save it. There is one exception on the site, and it is a different page: the breach check sends the first five characters of a one-way hash to Have I Been Pwned. If you want extra caution, test a similar password rather than the one that protects your most important account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you store the passwords I generate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is no account and no server that receives the password. The short list of recent passwords shown after you copy one lives only in the memory of the open tab and disappears when you reload the page. Use a password manager to keep the passwords you want to reuse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my long password score badly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The score rewards length and character variety and subtracts points for a missing character type, common words such as password or qwerty, characters repeated three or more times, and sequences like abc or 123. A long password built from predictable words can therefore score below a shorter random one, and the estimate cannot detect every human pattern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a password be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most accounts, 14 to 16 random characters is a sensible baseline, and 20 or more makes sense for email, banking and the master password of a password manager. Length matters more than clever substitutions, because every extra character multiplies the number of guesses an attacker needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I include symbols and numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when the site accepts them. Each character type you allow enlarges the set the generator draws from, which raises entropy per character. Avoid predictable substitutions such as replacing o with zero in a word; random symbols in a random password are what help."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a passphrase and when should I use one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A passphrase is a password made of several randomly chosen words. Six words from the EFF 7,776-word list give about 77 bits of entropy, similar to a 12-character random password of letters and digits. Use a passphrase where you must type or remember the password yourself, such as a device login or a password manager master password."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the breach check keep my password private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your browser hashes the password locally and sends only the first five characters of that SHA-1 hash to the Pwned Passwords service. The service replies with every hash ending that matches those five characters, and your browser compares the rest. Your password and its full hash never leave the device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does KeyGuard Pro work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The generator, strength checker and passphrase generator work offline once the page has loaded, because the calculations happen in the browser. The breach check needs a network connection to query Have I Been Pwned, and the advertising and analytics scripts will fail harmlessly until a connection returns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the site on a phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The pages are responsive and the tools work in modern mobile browsers. Copying a password places it on the phone clipboard so you can paste it into an app or password manager, and you can clear the clipboard afterwards like any other copied text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who runs KeyGuard Pro and how is it paid for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "KeyGuard Pro is an independent project run under the KeyGuard Pro name. It is free and funded by advertising served through Google AdSense, which has no access to anything you type into the tools. The About page explains how the tools and guides are produced."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the site use cookies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tools set no cookies of their own. Google Analytics and Google AdSense may set cookies for measurement and advertising, and visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent through Google's consent message. The Cookie Policy explains how to block or delete cookies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I report a mistake or a bad ad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email keyguard-pro@outlook.com with the page address and what you saw. For an ad, include the advertiser or a screenshot if you can, so it can be reported to Google. Corrections to a guide are made on the page and the revision date is updated."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -44,49 +187,85 @@
   </div>
 </header>
 
-<nav class="crumb"><a href="/">← Back to KeyGuard Pro</a></nav>
+<nav class="crumb" aria-label="Main"><a href="/">← Back to KeyGuard Pro</a></nav>
 
 <main>
   <div class="eyebrow">Help Center</div>
   <h1>Frequently Asked Questions</h1>
+  <p class="lede">Answers to the questions readers ask most about the generator, the strength checker and the breach check. If yours is not here, the <a href="/guides.html">guides</a> go into the detail and the <a href="/contact.html">contact page</a> explains how to write to us.</p>
 
   <details open>
-    <summary>How do I create a secure password?</summary>
-    <div class="answer">Use a minimum of 14 characters, combining uppercase and lowercase letters, numbers, and symbols. Avoid dictionary words, personal information, and repeated characters. The generator on our homepage does all of this automatically using your browser's secure random number generator.</div>
+    <summary>Are the passwords generated here truly random?</summary>
+    <div class="answer">Yes. The generator draws each character from your browser's cryptographic random number source, window.crypto.getRandomValues, rather than from Math.random. The cryptographic source is the one browsers use for security features, and its output is not predictable from earlier values.</div>
   </details>
 
   <details>
-    <summary>Is KeyGuard Pro really private?</summary>
-    <div class="answer">Yes. 100% of password generation and analysis happens locally in your browser using JavaScript. No passwords, settings, or analytics tied to your input are ever sent to a server. You can even use the generator completely offline once the page has loaded.</div>
+    <summary>Is it safe to type my password into the strength checker?</summary>
+    <div class="answer">The checker analyses the text in your browser and does not send it anywhere or save it. There is one exception on the site, and it is a different page: the breach check sends the first five characters of a one-way hash to Have I Been Pwned. If you want extra caution, test a similar password rather than the one that protects your most important account.</div>
   </details>
 
   <details>
-    <summary>Why should I use the password generator instead of making one up myself?</summary>
-    <div class="answer">Humans are surprisingly predictable when asked to "think random." Our generator uses the Web Crypto API's cryptographically secure random number generation to produce truly unpredictable passwords that resist both guessing and brute-force attacks.</div>
+    <summary>Do you store the passwords I generate?</summary>
+    <div class="answer">No. There is no account and no server that receives the password. The short list of recent passwords shown after you copy one lives only in the memory of the open tab and disappears when you reload the page. Use a password manager to keep the passwords you want to reuse.</div>
   </details>
 
   <details>
-    <summary>How accurate is the strength checker?</summary>
-    <div class="answer">It uses standard entropy calculations based on character set size and length, combined with checks for common patterns (repeated characters, sequences, dictionary words). While no estimator is perfect, it gives guidance that closely tracks how modern password-cracking tools actually behave.</div>
+    <summary>Why does my long password score badly?</summary>
+    <div class="answer">The score rewards length and character variety and subtracts points for a missing character type, common words such as password or qwerty, characters repeated three or more times, and sequences like abc or 123. A long password built from predictable words can therefore score below a shorter random one, and the estimate cannot detect every human pattern.</div>
   </details>
 
   <details>
-    <summary>Can I use these generated passwords for everything?</summary>
-    <div class="answer">Yes — but we strongly recommend pairing them with a dedicated password manager (such as Bitwarden or 1Password) so you never have to memorize them. Always use a unique password for every account; reusing passwords is one of the most common causes of account compromise.</div>
+    <summary>How long should a password be?</summary>
+    <div class="answer">For most accounts, 14 to 16 random characters is a sensible baseline, and 20 or more makes sense for email, banking and the master password of a password manager. Length matters more than clever substitutions, because every extra character multiplies the number of guesses an attacker needs.</div>
   </details>
 
   <details>
-    <summary>Does KeyGuard Pro store or log any of my data?</summary>
-    <div class="answer">No. We have no servers that process your password input, no accounts, and no logs of what you generate or check. See our <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a> for full details.</div>
+    <summary>Should I include symbols and numbers?</summary>
+    <div class="answer">Yes, when the site accepts them. Each character type you allow enlarges the set the generator draws from, which raises entropy per character. Avoid predictable substitutions such as replacing o with zero in a word; random symbols in a random password are what help.</div>
   </details>
 
   <details>
-    <summary>Is KeyGuard Pro free to use?</summary>
-    <div class="answer">Yes, completely free, with no usage limits or paywalls. The site is supported by non-intrusive advertising, which never has access to anything you type into the tools.</div>
+    <summary>What is a passphrase and when should I use one?</summary>
+    <div class="answer">A passphrase is a password made of several randomly chosen words. Six words from the EFF 7,776-word list give about 77 bits of entropy, similar to a 12-character random password of letters and digits. Use a passphrase where you must type or remember the password yourself, such as a device login or a password manager master password.</div>
   </details>
+
+  <details>
+    <summary>Does the breach check keep my password private?</summary>
+    <div class="answer">Your browser hashes the password locally and sends only the first five characters of that SHA-1 hash to the Pwned Passwords service. The service replies with every hash ending that matches those five characters, and your browser compares the rest. Your password and its full hash never leave the device.</div>
+  </details>
+
+  <details>
+    <summary>Does KeyGuard Pro work offline?</summary>
+    <div class="answer">The generator, strength checker and passphrase generator work offline once the page has loaded, because the calculations happen in the browser. The breach check needs a network connection to query Have I Been Pwned, and the advertising and analytics scripts will fail harmlessly until a connection returns.</div>
+  </details>
+
+  <details>
+    <summary>Can I use the site on a phone?</summary>
+    <div class="answer">Yes. The pages are responsive and the tools work in modern mobile browsers. Copying a password places it on the phone clipboard so you can paste it into an app or password manager, and you can clear the clipboard afterwards like any other copied text.</div>
+  </details>
+
+  <details>
+    <summary>Who runs KeyGuard Pro and how is it paid for?</summary>
+    <div class="answer">KeyGuard Pro is an independent project run under the KeyGuard Pro name. It is free and funded by advertising served through Google AdSense, which has no access to anything you type into the tools. The About page explains how the tools and guides are produced.</div>
+  </details>
+
+  <details>
+    <summary>Does the site use cookies?</summary>
+    <div class="answer">The tools set no cookies of their own. Google Analytics and Google AdSense may set cookies for measurement and advertising, and visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent through Google's consent message. The Cookie Policy explains how to block or delete cookies.</div>
+  </details>
+
+  <details>
+    <summary>How do I report a mistake or a bad ad?</summary>
+    <div class="answer">Email keyguard-pro@outlook.com with the page address and what you saw. For an ad, include the advertiser or a screenshot if you can, so it can be reported to Google. Corrections to a guide are made on the page and the revision date is updated.</div>
+  </details>
+
+  <h2>Where to read more</h2>
+  <p>The <a href="/guides.html">password security guides</a> explain entropy, passphrases, password managers, two-factor authentication and what to do after a breach in more depth. For the tools themselves, start with the <a href="/">password generator</a>, try the <a href="/passphrase-generator.html">passphrase generator</a>, or check a password against known breaches on the <a href="/breach-check.html">breach check</a> page.</p>
+
+  <footer>
+    <nav aria-label="Site"><a href="/">Generator</a><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/cookies.html">Cookie Policy</a><a href="/terms.html">Terms of Service</a></nav>
+    <div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div>
+  </footer>
 </main>
-
-<footer>© <span id="year"></span> KeyGuard Pro. All rights reserved.</footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -3,10 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2310b981'/><path d='M32 18a8 8 0 0 0-8 8v4h-1a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V33a3 3 0 0 0-3-3h-1v-4a8 8 0 0 0-8-8zm-4 12v-4a4 4 0 0 1 8 0v4h-8z' fill='white'/></svg>">
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+});
+gtag('consent', 'default', {
+  'ad_storage': 'granted',
+  'ad_user_data': 'granted',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'granted'
+});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
 <title>About KeyGuard Pro | KeyGuard Pro</title>
-<meta name="description" content="What KeyGuard Pro is, how the password generator and strength checker work, and why it runs entirely in your browser.">
+<meta name="description" content="What KeyGuard Pro is, who runs it, how the password generator and strength checker work, what stays on your device, and how the guides are produced.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://keyguard-pro.xyz/about.html">
+<meta property="og:site_name" content="KeyGuard Pro">
+<meta property="og:title" content="About KeyGuard Pro | KeyGuard Pro">
+<meta property="og:description" content="What KeyGuard Pro is, who runs it, how the password generator and strength checker work, and what stays on your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keyguard-pro.xyz/about.html">
+<meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0f172a">
 <style>body{margin:0;background:#0f172a;color:#e2e8f0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.7}
 main{max-width:720px;margin:0 auto;padding:24px 18px 60px}
@@ -16,20 +42,48 @@ footer{border-top:1px solid #1e293b;margin-top:36px;padding-top:16px;font-size:.
 </head>
 <body>
 <main>
-<nav><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+<nav aria-label="Main"><a href="/">&larr; KeyGuard Pro</a><a href="/passphrase-generator.html">Passphrase</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
 <h1>About KeyGuard Pro</h1>
 
-<p>KeyGuard Pro is a free password generator and strength checker. You choose a length and the kinds of characters you want, and the tool creates a random password in your browser. You can also type an existing password into the checker to see an estimate of its entropy, a measure of how many guesses an attacker would need.</p>
-<h2>Why it runs in your browser</h2>
-<p>A password tool is only useful if you can trust it, so KeyGuard Pro is built so that passwords are generated and analyzed on your own device, using your browser's built-in cryptographic random number generator. The passwords you generate or test are not sent to our servers or saved by us. The one exception is the optional <a href="/breach-check.html">Breach Check</a> page, which sends only the first five characters of a one-way hash to the Have I Been Pwned service, as explained on that page. Details on the third-party services the site does load, such as analytics and advertising, are in the <a href="/privacy-policy.html">Privacy Policy</a>.</p>
-<h2>How the strength estimate works</h2>
-<p>For random passwords, entropy equals the password length times log base 2 of the size of the character set in use. The checker applies this idea to what you type and treats it as an upper bound: a password that looks long but contains a common word or a keyboard pattern is much easier to guess than its length suggests, so treat the score as a guide rather than a guarantee.</p>
+<p class="lede">KeyGuard Pro is a free password generator and strength checker that runs entirely in your browser. It is an independent project with no accounts, no sign-up and no server that receives what you type.</p>
+
+<h2>Why the site exists</h2>
+<p>Most people are asked to invent a password several times a month, usually while they are trying to do something else. The result is predictable: either something memorable and weak, or one strong password reused across every site until a single breach opens all of them. KeyGuard Pro exists to make the safer choice the quicker one. Press a button and you get a password chosen by a random number generator instead of by a person, with an estimate of how much guessing it would take to find it.</p>
+
+<h2>What the site does</h2>
+<p>There are four tools, each with one job:</p>
+<ul>
+<li><strong>Password generator</strong> on the <a href="/">home page</a>. You choose a length between 8 and 64 characters, which character types to include, and whether to leave out lookalike characters such as i, l, 1, L, o, 0 and O. The characters come from <code>window.crypto.getRandomValues()</code>, the browser's cryptographic random number source.</li>
+<li><strong>Strength checker</strong>, also on the home page. Type a password and it shows a score out of 100, an entropy estimate in bits, an estimated crack time and notes about patterns it recognises.</li>
+<li><strong>Passphrase generator</strong>, a separate <a href="/passphrase-generator.html">passphrase page</a>. It picks words at random from the Electronic Frontier Foundation's 7,776-word list and joins them with a separator you choose, which is useful when you have to remember and type the password yourself.</li>
+<li><strong>Breach check</strong>, on the <a href="/breach-check.html">breach check page</a>. It tests a password against the Have I Been Pwned database of leaked passwords without sending the password or its full hash anywhere.</li>
+</ul>
+
+<h2>What stays on your device</h2>
+<p>Passwords you generate and text you type into the strength checker are processed by JavaScript in the page. They are not transmitted to KeyGuard Pro and they are not stored by us. There are no accounts and no database of users, so there is nothing on our side to look up later.</p>
+<p>The list of recently generated passwords appears only in the memory of the open tab. It is not written to cookies, local storage or session storage, and it disappears when you reload or close the page. Pressing copy puts the password on your device clipboard, where other applications may be able to read it until it is replaced, so clear the clipboard when you are finished. The one request that leaves the browser from a tool is on the breach check page, which is described in the <a href="/privacy-policy.html">Privacy Policy</a>.</p>
+
+<h2>How the strength estimate is produced</h2>
+<p>The checker looks at which character types are present, builds a character-set size from them (26 uppercase letters, 26 lowercase, 10 digits and about 32 symbols), and multiplies the password length by the base-2 logarithm of that size. The result is an entropy figure in bits. It then subtracts points for short passwords, for a missing character type, for common words such as "password" or "qwerty", for characters repeated three or more times, and for sequences such as abc or 123.</p>
+<p>The crack time shown next to the score divides the number of possible combinations by ten billion guesses per second. That is an assumption about a fast offline attack on a badly stored password database, and it is deliberately blunt. It also explains an oddity some visitors notice: a long password made of dictionary words can score well here while a short random-looking one scores lower, because the estimate rewards length and variety and cannot know whether a particular password has already appeared in a leaked list. Treat the score as guidance, not as proof that an account is safe.</p>
+
+<h2>How the guides are produced and kept current</h2>
+<p>The <a href="/guides.html">guides</a> are written for this site and checked against public references rather than copied from other publishers. The recommendations lean on widely published guidance, including NIST Special Publication 800-63B on digital identity, the Electronic Frontier Foundation's word list documentation, and the Have I Been Pwned API documentation. Each guide shows the date it was published and a revision date, and pages are revisited when the advice they give changes or when a reader reports an error. The site does not publish medical, legal or financial advice, and it does not claim to audit anyone's accounts.</p>
+
 <h2>How the site is funded</h2>
-<p>KeyGuard Pro is free to use. It is supported by advertising served through Google AdSense. Ads never affect the passwords the tool generates.</p>
+<p>KeyGuard Pro is free to use and has no paid tier. It is paid for by advertising served through Google AdSense. The ads are chosen and delivered by Google, not by us, and they never change the passwords the tools produce or the advice in the guides. The <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/cookies.html">Cookie Policy</a> explain the cookies involved and how to control them.</p>
+
 <h2>Who runs it</h2>
-<p>KeyGuard Pro is an independent project. If you find a bug, have a suggestion or spot something wrong in our guidance, please write to us through the <a href="/contact.html">Contact page</a>.</p>
-<p class="muted">Last updated: November 2026</p>
-<footer><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div></footer>
+<p>KeyGuard Pro is an independent project, not a company. It is run under the KeyGuard Pro name by the person who builds the tools, writes the guides and answers the email. There is no editorial team, no sponsored content and no affiliate arrangement attached to any recommendation on the site.</p>
+
+<h2>Corrections and contact</h2>
+<p>If something on the site is wrong, out of date or broken, we would like to hear about it. Email <a href="mailto:keyguard-pro@outlook.com">keyguard-pro@outlook.com</a> or use the <a href="/contact.html">contact page</a>. We aim to reply within two business days. When a guide is corrected, the change is made on the page and the revision date at the bottom is updated.</p>
+
+<p class="muted">Last updated: November 26, 2026</p>
+<footer>
+  <nav aria-label="Site"><a href="/">Generator</a><a href="/passphrase-generator.html">Passphrase generator</a><a href="/breach-check.html">Breach check</a><a href="/guides.html">Guides</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/cookies.html">Cookie Policy</a><a href="/terms.html">Terms of Service</a></nav>
+  <div style="margin-top:8px">&copy; 2026 KeyGuard Pro</div>
+</footer>
 </main>
 </body>
 </html>

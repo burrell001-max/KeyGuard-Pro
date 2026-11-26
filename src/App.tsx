@@ -426,14 +426,14 @@ const KeyGuardPro: React.FC = () => {
       {/* HERO */}
       <div className="max-w-5xl mx-auto px-6 pt-16 pb-10 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs tracking-widest text-emerald-400 mb-6">
-          100% CLIENT-SIDE • NOTHING TYPED IS SENT
+          100% CLIENT-SIDE • PASSWORDS STAY IN YOUR BROWSER
         </div>
         <h1 className="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
           Generate passwords.<br />Stay protected.
         </h1>
         <p className="max-w-xl mx-auto text-xl text-slate-400 mb-9">
-          Professional-grade password generator and analyzer. Everything runs locally in your browser. 
-          No data ever leaves your device.
+          Professional-grade password generator and analyzer. Everything runs locally in your browser — 
+          the passwords you generate or check are never sent to us.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <button 
@@ -793,7 +793,7 @@ const KeyGuardPro: React.FC = () => {
               },
               {
                 q: "Is KeyGuard Pro really private?",
-                a: "Yes. Password generation and analysis happen in your browser using JavaScript, and nothing you type into the tools is sent anywhere. The page loads privacy-friendly aggregate analytics, which cannot see what you enter. The tools also work offline once the page has loaded."
+                a: "Yes. Password generation and analysis happen in your browser using JavaScript, and the passwords you type are never sent to our servers. The page loads privacy-friendly aggregate analytics, which cannot see what you enter. The tools also work offline once the page has loaded."
               },
               {
                 q: "Why should I use the password generator?",

@@ -764,6 +764,10 @@ const KeyGuardPro: React.FC = () => {
             browser, and they do not require an account, which means there is no profile to build and nothing to sign up for.
           </p>
           <p>
+            It is built and maintained by Kent Williams, who writes the guides and answers the email. The
+            <a href="/about.html" className="text-emerald-400 underline">About page</a> explains how the tools work and how the content is kept current.
+          </p>
+          <p>
             Every password you generate and every strength analysis happens entirely within your browser. 
             We never see, store, or transmit your passwords — not even to our servers.
           </p>
@@ -858,7 +862,7 @@ const KeyGuardPro: React.FC = () => {
         <div className="text-center mb-9">
           <div className="text-emerald-400 text-sm tracking-[2px] mb-1">SUPPORT</div>
           <h3 className="font-semibold text-4xl tracking-tight">Contact</h3>
-          <p className="text-slate-400 mt-2">KeyGuard Pro is run by one person, so email is the fastest way to reach it.</p>
+          <p className="text-slate-400 mt-2">KeyGuard Pro is run by Kent Williams, so email is the fastest way to reach him.</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 text-center">
